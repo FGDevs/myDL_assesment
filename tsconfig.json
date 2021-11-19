@@ -15,12 +15,9 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": [
-        "./*"
-      ],
-      "@/*": [
-        "./*"
-      ]
+      "~/*": ["./*"],
+      "@/*": ["./*"],
+      "components/*": ["./src/components"]
     },
     "types": [
       "@types/node",
