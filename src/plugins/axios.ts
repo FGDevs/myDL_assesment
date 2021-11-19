@@ -21,6 +21,10 @@ const Api: Plugin = ({ $axios, redirect }) => {
     console.log('ERROR response', error)
   })
 
+  $axios.onResponse((response) => {
+    console.log('RESPONSE', response)
+  })
+
   $axios.onError((error) => {
     if(error.response) {
       const code = error.response.status

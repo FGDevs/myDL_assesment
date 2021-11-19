@@ -1,7 +1,12 @@
 import { resolve } from 'path'
 
 export default {
-  target: 'server',
+  /* 
+    * Defaults
+    * ssr: true
+    * target: 'server', 
+  */
+ 
   srcDir: 'src/',
   prefix: false,
   buildModules: [
@@ -10,7 +15,8 @@ export default {
     '@nuxtjs/composition-api/module'
   ],
   alias: {
-    'components': resolve(__dirname, './src/components')
+    'components': resolve(__dirname, './src/components'),
+    'interfaces': resolve(__dirname, './src/interfaces')
   },
   plugins: [ '~/plugins/axios' ],
   modules: [ '@nuxtjs/axios' ],
