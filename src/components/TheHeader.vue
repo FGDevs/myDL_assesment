@@ -1,12 +1,11 @@
 <template>
   <div>
-    <h1>Logo</h1>
+    <nuxt-link to="/">Logo</nuxt-link>
     <nav>
-      <a href=""></a>
-      <a href=""></a>
-      <a href=""></a>
-      <a href=""></a>
+      <nuxt-link to="/">Home</nuxt-link>
+      <nuxt-link to="/article">Article</nuxt-link>
+      <nuxt-link to="/">Create</nuxt-link>
     </nav>
-    <a href=""></a>
+    <nuxt-link to="/">Login</nuxt-link>
   </div>
 </template>
