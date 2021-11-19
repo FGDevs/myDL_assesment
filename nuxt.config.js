@@ -1,3 +1,4 @@
 export default {
-  target: 'server'
+  target: 'server',
+  buildModules: ['@nuxtjs/tailwindcss']
 }
