@@ -1,3 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .plc-text-xl::placeholder {
+    @apply text-xl text-gray-300 font-light
+  }
+}
+
+.body-fixed {
+  @apply overflow-hidden
+}
+
+.nav-body {
+  @apply max-h-0 h-screen opacity-0 invisible
+}
+.nav-show {
+  @apply max-h-screen h-screen opacity-100 visible
+}
+
+.modal {
+  @apply invisible opacity-0
+}
+
+.modal-show {
+  @apply visible opacity-100
+}
+
+@media (min-width: 768px) { 
+  .nav-body {
+    @apply max-h-full h-full opacity-100 visible
+  }
+}
+
+@layer base {
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('~assets/fonts/Roboto-Regular.ttf') format('truetype');
+  }
+}

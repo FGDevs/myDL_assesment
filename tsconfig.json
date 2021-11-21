@@ -17,12 +17,15 @@
     "paths": {
       "~/*": ["./*"],
       "@/*": ["./*"],
-      "components/*": ["./src/components"]
+      "components/*": ["./src/components/*"],
+      "interfaces/*": ["./src/interfaces/*"]
     },
     "types": [
       "@types/node",
       "@nuxt/types",
-      "@nuxtjs/axios"
+      "@nuxtjs/axios",
+      "@nuxtjs/composition-api",
+      "@nuxt/image",
     ]
   },
   "exclude": [
