@@ -25,3 +25,8 @@ export interface IContentResponse extends IBaseResponse {
   content: IContent[];
   meta: IContentMeta;
 }
+
+export interface IDetailContentResponse extends IBaseResponse {
+  content: IContent;
+  meta: IContentMeta;
+}
