@@ -1,8 +1,9 @@
 <template>
   <div>
     <TheHeader />
-    <Nuxt />
+    <Nuxt class="pt-12 md:pt-24" />
     <TheFooter />
+    <ModalLogin />
   </div>
 </template>
 
@@ -13,7 +14,8 @@ export default defineComponent({
   name: 'HomePage',
   components: { 
     TheHeader: (() => import('components/TheHeader.vue')),
-    TheFooter: (() => import('components/TheFooter.vue'))
+    TheFooter: (() => import('components/TheFooter.vue')),
+    ModalLogin: (() => import('components/modals/Login.vue'))
   }
 })
 </script>

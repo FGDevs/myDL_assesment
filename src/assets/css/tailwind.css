@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .plc-text-xl::placeholder {
+    @apply text-xl text-gray-300 font-light
+  }
+}
+
 .body-fixed {
   @apply overflow-hidden
 }
@@ -11,6 +17,14 @@
 }
 .nav-show {
   @apply max-h-screen h-screen opacity-100 visible
+}
+
+.modal {
+  @apply invisible opacity-0
+}
+
+.modal-show {
+  @apply visible opacity-100
 }
 
 @media (min-width: 768px) { 

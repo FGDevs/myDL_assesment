@@ -7,6 +7,8 @@ declare module '@nuxt/types' {
     $freezeBody: freezeFn,
     $unFreezeBody: freezeFn,
     $toggleFreeze: freezeFn,
+    $hideModal: (id: string) => void,
+    $showModal: (id: string) => void,
   }
 }
 
@@ -15,6 +17,8 @@ declare module '@nuxtjs/composition-api' {
     $freezeBody: freezeFn,
     $unFreezeBody: freezeFn,
     $toggleFreeze: freezeFn,
+    $hideModal: (id: string) => void,
+    $showModal: (id: string) => void,
   }
 }
 
@@ -31,7 +35,6 @@ const Overflow: Plugin = (_, inject) => {
    * Only remove body availability to be scrolled
    */
   inject('unFreezeBody', () => {
-    alert('unfreeze')
     if(bodyTag.classList.contains('body-fixed')) {
       bodyTag.classList.remove('body-fixed')
     }

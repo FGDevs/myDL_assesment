@@ -31,7 +31,8 @@ const Api: Plugin = ({ $axios, redirect }) => {
 
       switch (code) {
         case 400: 
-          redirect('/400')
+          console.log(error.response.statusText)
+          // redirect('/400')
           break
         case 500:
           console.log('Something wrong with your code!')

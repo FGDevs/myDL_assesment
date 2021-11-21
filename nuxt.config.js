@@ -26,7 +26,8 @@ export default {
   },
   plugins: [
     '~/plugins/axios',
-    { src: '~/plugins/overflow', mode: 'client' }
+    { src: '~/plugins/overflow', mode: 'client' },
+    { src: '~/plugins/modal', mode: 'client' }
   ],
   modules: [
     '@nuxt/image',
@@ -36,6 +37,6 @@ export default {
     baseURL: process.env.API_ENDPOINT
   },
   router: {
-    linkActiveClass: 'text-customred'
+    linkActiveClass: 'text-red-500'
   }
 }
