@@ -1,5 +1,5 @@
 <template>
-  <header class="fixed top-0 left-0 right-0 bg-white filter drop-shadow-sm">
+  <header class="fixed top-0 left-0 right-0 bg-white md:filter md:drop-shadow-sm">
     <div class="container mx-auto p-4 flex items-center justify-between md:px-0 md:py-5 md:justify-start
     ">
       <a
@@ -12,14 +12,14 @@
         id="header-nav"
         class="nav-body bg-white flex inset-0 transition duration-150 ease-in-out fixed flex-col top-12 md:relative md:flex-row md:flex-grow md:top-0 md:ml-4 md:py-0 md:px-2"
       >
-        <a
+        <nuxt-link
           class="text-center text-sm p-4 md:text-md md:py-3 md:px-6"
           v-for="(navigation, index) in navigations"
           :key="index"
-          :href="navigation.link"
+          :to="navigation.link"
         >
           {{ navigation.text }}
-        </a>
+        </nuxt-link>
         <div class="text-center text-sm text-blue-500 p-4 md:py-3 md:px-6 md:flex-grow md:text-right">
           <button @click="handleShowModal('login')">
             Login

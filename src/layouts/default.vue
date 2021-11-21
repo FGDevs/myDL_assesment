@@ -4,6 +4,7 @@
     <Nuxt class="pt-12 md:pt-24" />
     <TheFooter />
     <ModalLogin />
+    <ModalRegister />
   </div>
 </template>
 
@@ -15,7 +16,8 @@ export default defineComponent({
   components: { 
     TheHeader: (() => import('components/TheHeader.vue')),
     TheFooter: (() => import('components/TheFooter.vue')),
-    ModalLogin: (() => import('components/modals/Login.vue'))
+    ModalLogin: (() => import('components/modals/Login.vue')),
+    ModalRegister: (() => import('components/modals/Register.vue'))
   }
 })
 </script>

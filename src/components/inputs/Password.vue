@@ -2,9 +2,8 @@
   <div class="relative py-2">
     <label class="block mb-2">Password</label>
     <input
-      id="ele-input-password"
       class=" plc-text-xl py-4 px-3 rounded w-full border-2 border-gray-100 "
-      type="password" placeholder="Entry your email"
+      :type="isShowPassword? 'text':'password'" placeholder="Entry your email"
       v-model="input"
       @change="handleChange"
       autocomplete
@@ -39,22 +38,12 @@ export default defineComponent({
     }
 
     const handleTogglePassword = () => {
-      const inputField = document.getElementById('ele-input-password')
-      const type = inputField?.getAttribute('type')
       isShowPassword.value = !isShowPassword.value
-      switch (type) {
-        case 'password':
-          inputField?.setAttribute('type', 'text')
-          break;
-      
-        default:
-          inputField?.setAttribute('type', 'password')
-          break;
-      }
     }
 
     const resetInput = () => {
       input.value = ''
+      isShowPassword.value = false
     }
 
     return {

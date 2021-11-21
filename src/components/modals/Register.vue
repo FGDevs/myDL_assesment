@@ -1,13 +1,13 @@
 <template>
   <base-modal
-    modal-name="login"
+    modal-name="register"
     @close="handleCloseModal"
   >
     <template v-slot:form>
       <div class="bg-white z-10 rounded-t-lg w-full max-w-xl mx-auto md:rounded-lg ">
         <div class="md:p-20">
           <div class="flex items-center justify-between p-4">
-            <h1 class="text-xl font-medium md:text-3xl md:font-bold">Login</h1>
+            <h1 class="text-xl font-medium md:text-3xl md:font-bold">Register</h1>
             <i
               class="cursor-pointer"
               @click="handleCloseModal"
@@ -18,22 +18,18 @@
             </i>
           </div>
           <div class="p-4">
-            <p class="mb-6 md:-mt-6 md:mb-12 ">Don't have an account?
-              <span
-                class="text-red-500 cursor-pointer"
-                @click="handleShowRegisterModal"
-              >
-                Create Account
-              </span>
+            <p class="mb-6 md:-mt-6 md:mb-12 ">Have an account?
+              <span class="text-red-500 cursor-pointer" @click="handleShowModalLogin" >Login</span>
             </p>
             <form>
-              <FieldEmail ref="refInputEmail" v-model="inputFieldEmail" />
-              <FieldPassword ref="refInputPassword" v-model="inputFieldPassword" />
+              <FieldFullname ref="refFieldFullname"  v-model="inputFieldFullname" />
+              <FieldEmail ref="refFieldEmail" v-model="inputFieldEmail" />
+              <FieldPassword ref="refFieldPassword" v-model="inputFieldPassword" />
               <button
                 class="block bg-red-500 text-white rounded mt-8 px-3 py-4 w-full tracking-wide md:w-max md:mt-10 "
-                @click="handleSubmitFormLogin"
+                @click="handleSubmitFormRegister"
               >
-                Log in
+                Create Account
               </button>
             </form>
           </div>
@@ -44,20 +40,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, useAttrs, useContext } from '@nuxtjs/composition-api'
+import { defineComponent, useContext, ref } from '@nuxtjs/composition-api'
 
+import FieldFullname from 'components/inputs/Fullname.vue'
 import FieldEmail from 'components/inputs/Email.vue'
 import FieldPassword from 'components/inputs/Password.vue'
 
 export default defineComponent({
-  name: 'ModalLogin',
+  name: 'ModalRegister',
 
   components: {
     BaseModal: (() => import('components/modals/Base.vue')),
+    FieldFullname,
     FieldEmail,
     FieldPassword,
   },
-
+  
   setup() {
     const {
       $axios,
@@ -66,18 +64,22 @@ export default defineComponent({
       $showModal
     } = useContext()
 
-    const inputFieldEmail = ref('')
-    const inputFieldPassword = ref('')
+    const inputFieldFullname = ref<string>('')
+    const inputFieldEmail = ref<string>('')
+    const inputFieldPassword = ref<string>('')
 
-    const refInputEmail = ref<InstanceType<typeof FieldEmail> | null>()
-    const refInputPassword = ref<InstanceType<typeof FieldPassword> | null>()
-    
-    const handleSubmitFormLogin = async (e: Event) => {
+    const refFieldFullname = ref<InstanceType<typeof FieldFullname> | null>(null)
+    const refFieldEmail = ref<InstanceType<typeof FieldEmail> | null>(null)
+    const refFieldPassword = ref<InstanceType<typeof FieldPassword> | null>(null)
+
+    const handleSubmitFormRegister = async (e: Event) => {
       e.preventDefault()
 
-      const response = await $axios.post('auth/login', {
-        email: inputFieldEmail.value,
-        password: inputFieldPassword.value
+      const response = await $axios.post('auth/register', {
+        name : inputFieldFullname.value,
+        email : inputFieldEmail.value,
+        password : inputFieldPassword.value,
+        phone : "08213465789"
       })
 
       if(response.data.code === 200) {
@@ -86,9 +88,10 @@ export default defineComponent({
     }
 
     const closeModal = () => {
-      refInputEmail.value?.resetInput()
-      refInputPassword.value?.resetInput()
-      $hideModal('login')
+      refFieldFullname.value?.resetInput()
+      refFieldEmail.value?.resetInput()
+      refFieldPassword.value?.resetInput()
+      $hideModal('register')
     }
 
     const handleCloseModal = () => {
@@ -96,20 +99,22 @@ export default defineComponent({
       $unFreezeBody()
     }
 
-    const handleShowRegisterModal = () => {
-      $showModal('register')
+    const handleShowModalLogin = () => {
+      $showModal('login')
       closeModal()
     }
-    
+
     return {
-      refInputEmail,
-      refInputPassword,
+      inputFieldFullname,
       inputFieldEmail,
       inputFieldPassword,
-      handleSubmitFormLogin,
+      refFieldFullname,
+      refFieldEmail,
+      refFieldPassword,
       handleCloseModal,
-      handleShowRegisterModal,
+      handleShowModalLogin,
+      handleSubmitFormRegister,
     }
-  },
+  }
 })
 </script>
