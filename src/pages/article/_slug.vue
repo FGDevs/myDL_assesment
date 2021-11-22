@@ -16,16 +16,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, useAsync, useContext, useFetch, useRoute, useRouter } from '@nuxtjs/composition-api'
+import { defineComponent, ref, useContext, useFetch, useRoute, useMeta, useRouter } from '@nuxtjs/composition-api'
 import { IContent, IContentResponse } from '~/src/interfaces/Article'
 
 export default defineComponent({
   name: 'DetailArticlePage',
 
+  head: {},
+
   setup() {
     const { $axios } = useContext()
     const route = useRoute()
     const router = useRouter()
+
+    console.log('ROUTE', route.value.fullPath)
 
     const content = ref<IContent>()
 
@@ -34,12 +38,23 @@ export default defineComponent({
         const { data } = await $axios.get<IContentResponse>(`article?search=${route.value.params.slug.replace(/%20/, ' ')}`)
         if(data.content) {
           content.value = data.content[0]
-        } 
+        }
       } catch(error) {
         console.error((error as Error).message)
         router.push('/404')
       }
     })
+
+    useMeta(() => ({
+      title: content.value?.title,
+      meta: [
+        { hid: 'description', name: 'description', content: `${content.value?.short_description}` },
+        { hid: 'og:title', name: 'og:title', content: `${content.value?.title}` },
+        { hid: 'og:image', name: 'og:image', content: `${content.value?.image}` },
+        { hid: 'og:description', name: 'og:description', content: `${content.value?.short_description}` },
+        { hid: 'og:url', name: 'og:url', content: `https://my-digilearn.herokuapp.com/${content.value?.short_description}` },
+      ]
+    }))
 
     return { content }
   },

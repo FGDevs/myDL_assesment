@@ -16,8 +16,8 @@
           class="text-center text-sm p-4 md:text-md md:py-3 md:px-6"
           v-for="(navigation, index) in navigations"
           :key="index"
-          :to="navigation.link"
           :exact="navigation.exact"
+          :to="navigation.link"
         >
           {{ navigation.text }}
         </nuxt-link>
@@ -50,7 +50,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, useContext } from '@nuxtjs/composition-api'
+import { defineComponent, ref, useContext, useRoute, useRouter } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   name: 'TheHeader',
@@ -60,7 +60,13 @@ export default defineComponent({
   },
 
   setup() {
-    const { $freezeBody, $unFreezeBody, $showModal } = useContext()
+    const {
+      $freezeBody,
+      $unFreezeBody,
+      $showModal
+    } = useContext()
+
+    const router = useRouter()
 
     const isNavVisible = ref(false)
     const navigations = [
