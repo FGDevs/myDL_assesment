@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, useContext, useFetch } from '@nuxtjs/composition-api'
+import { defineComponent, ref, useContext, useMeta, useFetch } from '@nuxtjs/composition-api'
 import { ICategory, ICategoryResponse } from '../interfaces/Category'
 
 import FieldTitle from 'components/inputs/Title.vue'
@@ -48,7 +48,13 @@ export default defineComponent({
     FieldTogglePublish
   },
 
+  head: {},
+  
   setup() {
+    useMeta({
+      title: 'Create Article'
+    })
+    
     const { $axios } = useContext()
 
     const categories = ref<ICategory[]>([])
