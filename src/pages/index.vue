@@ -42,11 +42,17 @@ export default defineComponent({
 
     const { $axios } = useContext()
     useFetch(async () => {
+<<<<<<< HEAD
       const { data } = await $axios.get<IContentResponse>('article?size=3&page=1')
       contents.value = data.content
     })
 
 
+=======
+      const { data } = await $axios.get<IContentResponse>('article')
+      contents.value = data.content
+    })
+>>>>>>> 7eda14757f7321a19ce0a9ed57f35bfa0bbd7f7c
     return { contents }
   },
 })
