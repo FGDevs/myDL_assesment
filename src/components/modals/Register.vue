@@ -90,8 +90,11 @@ export default defineComponent({
     }
 
     const closeModal = () => {
+      // @ts-ignore
       refFieldFullname.value?.resetInput()
+      // @ts-ignore
       refFieldEmail.value?.resetInput()
+      // @ts-ignore
       refFieldPassword.value?.resetInput()
       $hideModal('register')
     }

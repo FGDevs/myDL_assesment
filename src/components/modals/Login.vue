@@ -89,7 +89,9 @@ export default defineComponent({
     }
 
     const closeModal = () => {
+      // @ts-ignore
       refInputEmail.value?.resetInput()
+      // @ts-ignore
       refInputPassword.value?.resetInput()
       $hideModal('login')
     }
