@@ -83,6 +83,7 @@ export default defineComponent({
 
       if(response.data.code === 200) {
         app.$cookies.set('token', response.data.content[0].token)
+        alert('Berhasil Masuk!')
         handleCloseModal()
       }
     }

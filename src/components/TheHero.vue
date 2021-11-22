@@ -1,3 +1,3 @@
 <template>
-  <nuxt-img class="max-w-none w-full" src="/images/hero.png"/>
+  <nuxt-img class="absolute h-full w-full object-cover sm:relative" src="/images/hero.png"/>
 </template>

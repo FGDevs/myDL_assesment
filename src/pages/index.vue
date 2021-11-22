@@ -1,6 +1,6 @@
 <template>
   <main>
-    <section class="container mx-auto mb-8 md:py-12">
+    <section class="container relative mx-auto h-96  mb-8 sm:h-auto sm:pb-0 sm:py-12">
       <TheHero />
     </section>
     <section class="container mx-auto p-4 md:px-0">
@@ -10,15 +10,9 @@
           v-for="content in contents"
           :key="content.id"
           :to="`/article/${content.title}`"
-          class=" block w-full px-0 py-4 sm:w-60 sm:px-3 lg:w-80"
+          class="block w-full px-0 py-4 md:w-60 md:px-3 lg:w-80"
         >
-          <div class="h-52">
-            <nuxt-img class="w-full h-full object-cover" :src="content.image" :alt="content.title" />
-          </div>
-          <div class="py-4">
-            <p class="text-xl font-medium mb-2">{{ content.title }}</p>
-            <p class="font-light ">{{ content.short_description }}</p>
-          </div>
+          <CardArticle :content="content" />
         </nuxt-link>
       </div>
     </section>
@@ -32,7 +26,8 @@ import { IContent, IContentResponse } from 'interfaces/Article'
 export default defineComponent({
   name: 'HomePage',
   components: {
-    TheHero: (() => import('components/TheHero.vue'))
+    TheHero: (() => import('components/TheHero.vue')),
+    CardArticle: (() => import('components/cards/Article.vue'))
   },
   setup() {
     let contents = ref<IContent[]>([])

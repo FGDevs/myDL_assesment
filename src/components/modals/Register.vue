@@ -83,7 +83,9 @@ export default defineComponent({
       })
 
       if(response.data.code === 200) {
-        handleCloseModal()
+        alert('Berhasil Terdaftar, Silahkan login dengan akun yang baru saja kamu daftarkan')
+        closeModal()
+        $showModal('login')
       }
     }
 
