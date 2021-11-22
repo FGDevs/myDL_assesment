@@ -1,11 +1,11 @@
 <template>
   <main>
-    <div class="flex flex-wrap justify-center mx-auto">
+    <div class="container flex flex-wrap mx-auto p-4 sm:px-0 lg:px-32 ">
       <nuxt-link
         v-for="content in contents"
         :key="content.id"
         :to="`/article/${content.title}`"
-        class=" block w-full px-0 py-4 md:w-80"
+        class="block w-full px-0 py-4 sm:w-1/2 md:w-1/3 sm:px-3 lg:w-1/3 "
       >
         <CardArticle :content="content" />
       </nuxt-link>
