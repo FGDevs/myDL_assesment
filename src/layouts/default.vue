@@ -1,7 +1,7 @@
 <template>
   <div>
     <TheHeader />
-    <Nuxt class="pt-12 md:pt-24" />
+    <Nuxt class="pt-12 min-h-screen md:pt-24" />
     <TheFooter />
     <ModalLogin />
     <ModalRegister />

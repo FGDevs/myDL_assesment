@@ -6,6 +6,10 @@
   .plc-text-xl::placeholder {
     @apply text-xl text-gray-300 font-light
   }
+
+  .plc-text::placeholder {
+    @apply text-sm text-gray-600 font-light
+  }
 }
 
 .body-fixed {
@@ -31,6 +35,14 @@
   .nav-body {
     @apply max-h-full h-full opacity-100 visible
   }
+}
+
+.toggle-publish {
+  @apply bg-gray-500
+}
+
+.toggle-publish__active {
+  @apply bg-blue-500
 }
 
 @layer base {

@@ -7,7 +7,17 @@ declare module '@nuxt/types' {
   }
 }
 
-const Api: Plugin = ({ $axios, redirect }) => {
+const Api: Plugin = ({ $axios, app }) => {
+
+  $axios.interceptors.request.use((config) => {
+    const token = app.$cookies.get('token')
+    console.log(token)
+    if(token) {
+      config.headers['Authorization'] = `Bearer ${token}`
+    }
+    return config
+  })
+
   $axios.onRequest((config) => {
     console.log(config)
     console.log(`Request to ${config.url} called`)
@@ -18,7 +28,7 @@ const Api: Plugin = ({ $axios, redirect }) => {
   })
 
   $axios.onResponseError((error) => {
-    console.log('ERROR response', error)
+    console.log('ERROR response', error.config)
   })
 
   $axios.onResponse((response) => {
@@ -32,7 +42,6 @@ const Api: Plugin = ({ $axios, redirect }) => {
       switch (code) {
         case 400: 
           console.log(error.response.statusText)
-          // redirect('/400')
           break
         case 500:
           console.log('Something wrong with your code!')

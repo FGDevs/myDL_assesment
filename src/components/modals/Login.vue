@@ -63,7 +63,8 @@ export default defineComponent({
       $axios,
       $unFreezeBody,
       $hideModal,
-      $showModal
+      $showModal,
+      app,
     } = useContext()
 
     const inputFieldEmail = ref('')
@@ -81,6 +82,7 @@ export default defineComponent({
       })
 
       if(response.data.code === 200) {
+        app.$cookies.set('token', response.data.content[0].token)
         handleCloseModal()
       }
     }

@@ -1,13 +1,13 @@
 <template>
-  <header class="fixed top-0 left-0 right-0 bg-white md:filter md:drop-shadow-sm">
+  <header class="fixed top-0 left-0 right-0 bg-white md:filter md:drop-shadow-sm z-30">
     <div class="container mx-auto p-4 flex items-center justify-between md:px-0 md:py-5 md:justify-start
     ">
-      <a
+      <nuxt-link
         class="block h-4 md:h-auto"
-        href="/"
+        to="/"
       >
         <TheLogo />
-      </a>
+      </nuxt-link>
       <nav
         id="header-nav"
         class="nav-body bg-white flex inset-0 transition duration-150 ease-in-out fixed flex-col top-12 md:relative md:flex-row md:flex-grow md:top-0 md:ml-4 md:py-0 md:px-2"
@@ -17,6 +17,7 @@
           v-for="(navigation, index) in navigations"
           :key="index"
           :to="navigation.link"
+          :exact="navigation.exact"
         >
           {{ navigation.text }}
         </nuxt-link>
@@ -63,9 +64,9 @@ export default defineComponent({
 
     const isNavVisible = ref(false)
     const navigations = [
-      { text: 'Home', link: '/' },
-      { text: 'Article', link: '/article' },
-      { text: 'Create', link: '/create' },
+      { text: 'Home', link: '/', exact: true, },
+      { text: 'Article', link: '/article', exact: false },
+      { text: 'Create', link: '/create', exact: false },
     ]
     
     const handleShowNav = () => {
