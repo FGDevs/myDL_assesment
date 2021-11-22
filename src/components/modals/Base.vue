@@ -1,5 +1,5 @@
 <template>
-  <div :id="`modal-${modalName}`" class="modal fixed inset-0 flex items-end transition duration-200 md:items-center">
+  <div :id="`modal-${modalName}`" class="modal fixed inset-0 flex items-end transition duration-200 z-50 md:items-center">
     <div
       class="absolute inset-0 bg-black bg-opacity-60 z-0"
       @click="handleHideModal"

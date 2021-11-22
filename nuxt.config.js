@@ -27,11 +27,12 @@ export default {
   plugins: [
     '~/plugins/axios',
     { src: '~/plugins/overflow', mode: 'client' },
-    { src: '~/plugins/modal', mode: 'client' }
+    { src: '~/plugins/modal', mode: 'client' },
   ],
   modules: [
     '@nuxt/image',
     '@nuxtjs/axios',
+    'cookie-universal-nuxt',
   ],
   axios: {
     baseURL: process.env.API_ENDPOINT
