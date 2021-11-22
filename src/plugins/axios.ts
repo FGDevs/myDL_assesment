@@ -11,7 +11,7 @@ const Api: Plugin = ({ $axios, app }) => {
 
   $axios.interceptors.request.use((config) => {
     const token = app.$cookies.get('token')
-    console.log(token)
+    // console.log(token)
     if(token) {
       config.headers['Authorization'] = `Bearer ${token}`
     }
@@ -19,20 +19,20 @@ const Api: Plugin = ({ $axios, app }) => {
   })
 
   $axios.onRequest((config) => {
-    console.log(config)
-    console.log(`Request to ${config.url} called`)
+    // console.log(config)
+    // console.log(`Request to ${config.url} called`)
   })
 
   $axios.onRequestError((error) => {
-    console.log('ERROR request',error)
+    // console.log('ERROR request',error)
   })
 
   $axios.onResponseError((error) => {
-    console.log('ERROR response', error.config)
+    // console.log('ERROR response', error.config)
   })
 
   $axios.onResponse((response) => {
-    console.log('RESPONSE', response)
+    // console.log('RESPONSE', response)
   })
 
   $axios.onError((error) => {
@@ -41,10 +41,10 @@ const Api: Plugin = ({ $axios, app }) => {
 
       switch (code) {
         case 400: 
-          console.log(error.response.statusText)
+          // console.log(error.response.statusText)
           break
         case 500:
-          console.log('Something wrong with your code!')
+          // console.log('Something wrong with your code!')
       }
     }
   })

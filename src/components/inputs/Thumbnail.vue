@@ -25,7 +25,7 @@ export default defineComponent({
 
     const handleChangeFile = (e: Event) => {
       file.value = (<HTMLInputElement>e.target)?.files?.[0] 
-      console.log(file.value?.name)
+      // console.log(file.value?.name)
       emit('input', file.value)
     }
 

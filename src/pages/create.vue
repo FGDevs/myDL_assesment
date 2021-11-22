@@ -73,14 +73,14 @@ export default defineComponent({
     const handleSubmitFormCreate = async (e: Event) => {
       e.preventDefault()
 
-      console.log(
-        inputFieldTitle.value,
-        inputFieldContent.value,
-        inputFieldShortDescription.value,
-        inputFieldThumbnail.value,
-        inputFieldCategory.value,
-        inputFieldTogglePublish.value,
-      )
+      // console.log(
+      //   inputFieldTitle.value,
+      //   inputFieldContent.value,
+      //   inputFieldShortDescription.value,
+      //   inputFieldThumbnail.value,
+      //   inputFieldCategory.value,
+      //   inputFieldTogglePublish.value,
+      // )
 
       const response = await $axios.post('article/create', {
         title: inputFieldTitle.value,

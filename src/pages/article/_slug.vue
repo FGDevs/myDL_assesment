@@ -29,7 +29,7 @@ export default defineComponent({
     const route = useRoute()
     const router = useRouter()
 
-    console.log('ROUTE', route.value.fullPath)
+    // console.log('ROUTE', route.value.fullPath)
 
     const content = ref<IContent>()
 
