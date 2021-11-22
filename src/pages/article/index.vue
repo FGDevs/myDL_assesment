@@ -1,14 +1,14 @@
 <template>
   <main>
     <div class="flex flex-wrap justify-center mx-auto">
-      <a
+      <nuxt-link
         v-for="content in contents"
         :key="content.id"
-        :href="`/article/${content.id}`"
+        :to="`/article/${content.title}`"
         class=" block w-full px-0 py-4 md:w-80"
       >
         <CardArticle :content="content" />
-      </a>
+      </nuxt-link>
     </div>
   </main>
 </template>
